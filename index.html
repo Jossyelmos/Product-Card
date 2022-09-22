@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <title>Animated Product Card</title>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="product-card">
+
+            <div class="">
+                <div class="logo-cart">
+                    <div class="back">
+                        <i class="uil uil-angle-left"></i>
+                        <span>back</span>
+                    </div>
+                    <i class="uil uil-shopping-cart-alt"></i>
+                </div>
+            </div>
+
+            <div class="main-images">
+                <img id="white" class="white active" src="white.avif" alt="white">
+                <img id="black" class="black" src="black.avif" alt="black">
+                <img id="blue" class="blue" src="blue.avif" alt="blue">
+            </div>
+        
+            <div class="show-details">
+                <span class="show-name">iphone 13 pro max</span>
+            </div>
+        
+            <div class="color-price">
+                <div class="color-option">
+                    <span class="color">color</span>
+                    <div class="circles">
+                        <span class="circle white active" id="white"></span>
+                        <span class="circle black" id="black"></span>
+                        <span class="circle blue" id="blue"></span>
+                        
+                    </div>
+                </div>
+                <div class="price">
+                    <div class="price-num">$680</div>
+                </div>
+            </div>
+        
+            <div class="button">
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js" integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+
+            let circle = document.querySelector(".color-option");
+
+            circle.addEventListener("click", (e) => {
+                let target = e.target;
+                if(target.classList.contains("circle")) {
+                    circle.querySelector(".active").classList.remove("active");
+                    target.classList.add("active");
+                    document.querySelector(".main-images .active").classList.remove("active");
+                    document.querySelector(`.main-images .${target.id}`).classList.add("active");
+                }
+            });
+
+            // Animations
+            gsap.from(".logo-cart", {
+                opacity: 0,
+                durations: 1,
+                delay: 0.8,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+            });
+            
+            gsap.from(".main-images", {
+                opacity: 0,
+                durations: 2,
+                delay: 1,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+            });
+
+            gsap.from(".show-name", {
+                opacity: 0,
+                durations: 3,
+                delay: 1.5,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+            });
+
+            gsap.from(".color-price", {
+                opacity: 0,
+                durations: 1.8,
+                delay: 1.8,
+                y: -25,
+                ease: "expo.out",
+                stagger: 0.2,
+            });
+
+            gsap.from(".button", {
+                opacity: 0,
+                durations: 2,
+                delay: 2,
+                y: 25,
+                ease: "expo.out",
+                stagger: 0.2,
+            });
+
+        </script>
+    </body>
+</html>
